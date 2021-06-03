@@ -2,7 +2,7 @@ class Solution {
     public int smallestDivisor(int[] nums, int threshold) {
         if (nums == null || nums.length == 0) return -1;
         int mx = 0;
-        for (Integer i : nums) {
+        for (int i : nums) {
             mx = Math.max(mx, i);
         }
         int left = 1;
@@ -23,8 +23,8 @@ class Solution {
     
     private int sumofdivision(int[] nums, int divisor) {
         int sum = 0;
-        for (Integer i : nums) {
-            sum +=(int) Math.ceil( (double) i / divisor);
+        for (int i : nums) {
+            sum += (i + divisor - 1) / divisor;
         }
         return sum;
     }
