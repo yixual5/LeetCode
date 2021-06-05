@@ -17,9 +17,8 @@ class Solution {
             pointer2 = pointer2.next.next;
             pointer1 = pointer1.next;
         }
-        ListNode prev = pointer1;
-        pointer1 = pointer1.next;
-        prev.next = null;
+        ListNode prev = null;
+        //pointer1 = pointer1.next; pointer1 is at the beginning pf second half
         while (pointer1 != null) {
             ListNode temp = pointer1.next;
             pointer1.next = prev;
