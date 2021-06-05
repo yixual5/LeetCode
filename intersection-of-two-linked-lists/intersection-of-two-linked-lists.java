@@ -9,7 +9,7 @@
  *     }
  * }
  */
-// 40mins to come up with this optimal solution
+// 40mins to come up with this optimal solution c
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) return null;
