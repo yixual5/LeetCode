@@ -25,8 +25,10 @@ class Solution {
             cur = temp;
             
         }
+        
         Node cur2 = head;
         Node newH = cur2.next;
+        //first think about unlink the old and new list when assign random poniter, but something wents wrong
         while (cur2 != null) {
             Node temp = cur2.next.next;
             cur2.next.random = cur2.random == null ? null : cur2.random.next;
