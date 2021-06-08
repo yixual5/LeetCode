@@ -8,6 +8,8 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+// solving with brute force first, then write the problem again and change to decreasing stack
 class Solution {
     public int[] nextLargerNodes(ListNode head) {
         if (head == null) return new int[]{};
