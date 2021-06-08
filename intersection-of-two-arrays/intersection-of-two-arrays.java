@@ -1,4 +1,5 @@
 class Solution {
+    // 15 mins
     public int[] intersection(int[] nums1, int[] nums2) {
         HashSet<Integer> check = new HashSet<>();
         HashSet<Integer> check2 = new HashSet<>();
