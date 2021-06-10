@@ -1,3 +1,5 @@
+// I have no idea to use heap. This answer is obtained by looking at the solution.
+
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> heap = new PriorityQueue<>();
