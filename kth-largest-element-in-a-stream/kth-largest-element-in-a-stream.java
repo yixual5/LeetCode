@@ -11,6 +11,7 @@ class KthLargest {
     }
     
     public int add(int val) {
+        // edge case
         if (heap.size() < this.k){
             heap.add(val);
             return heap.peek();
