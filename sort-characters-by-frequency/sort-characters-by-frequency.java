@@ -1,6 +1,9 @@
 class Solution {
     // optimal solution with O(n)
     public String frequencySort(String s) {
+        if (s == null) {
+            return null;
+        }
         HashMap<Character, Integer> count = new HashMap<>();
         for (char c: s.toCharArray()) {
             count.put(c, count.getOrDefault(c, 0) + 1);
