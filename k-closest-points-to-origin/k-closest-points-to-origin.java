@@ -1,3 +1,4 @@
+// heap comes to my mind at very first
 class Solution {
     public int[][] kClosest(int[][] points, int k) {
         if (points == null) return null;
