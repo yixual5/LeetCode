@@ -1,4 +1,5 @@
 class Solution {
+    // same algorithm as previous problem
     public int[] topKFrequent(int[] nums, int k) {
         HashMap<Integer, Integer> count = new HashMap<>();
         for (int i : nums) {
