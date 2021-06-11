@@ -1,5 +1,5 @@
 class Solution {
-    // optimal solution with O(n)
+    // optimal solution with O(n) 
     public String frequencySort(String s) {
         if (s == null) {
             return null;
