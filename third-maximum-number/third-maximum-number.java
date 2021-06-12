@@ -1,4 +1,5 @@
 class Solution {
+    // one-pass algorithm
     public int thirdMax(int[] nums) {
         HashSet<Integer> mx = new HashSet<>();
         for (int num : nums) {
