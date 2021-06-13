@@ -1,4 +1,5 @@
 class Solution {
+    // another backtracking
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null) return null;
         List<List<Integer>> result = new ArrayList<>();
