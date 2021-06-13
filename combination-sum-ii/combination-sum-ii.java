@@ -1,4 +1,5 @@
 class Solution {
+    // same as combination-sum i, but there exists some duplicates and cannot use same number mutliple times
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(candidates);
