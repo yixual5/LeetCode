@@ -1,4 +1,5 @@
 class Solution {
+    // naive approach
     private List<List<Integer>> result;
     int[] candidates;
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
