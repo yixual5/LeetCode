@@ -1,4 +1,5 @@
 class Solution {
+    // backtracking, easy to implement
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums == null) return result;
