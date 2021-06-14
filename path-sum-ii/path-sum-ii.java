@@ -26,15 +26,14 @@ class Solution {
     private void backtracking(TreeNode root, int targetSum, List<List<Integer>> result,
                              LinkedList<Integer> cur) {
         if (root == null) return;
-        
+        cur.add(root.val);
         if (root.left == null && root.right == null && targetSum - root.val == 0) {
-            cur.add(root.val);
             result.add((LinkedList) cur.clone());
             cur.removeLast();
             return;
         }
         //
-        cur.add(root.val);
+        //cur.add(root.val);
         backtracking(root.left, targetSum - root.val, result, cur);
         backtracking(root.right, targetSum - root.val, result, cur);
         cur.removeLast();
