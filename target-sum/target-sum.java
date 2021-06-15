@@ -59,3 +59,37 @@ class Solution {
         
     }
 }
+
+// 1-d dp solution
+class Solution {
+    private int count;
+    
+    public int findTargetSumWays(int[] nums, int target) {
+        if (nums == null) return 0;
+        int sum = 0;
+        for (int num: nums) {
+            sum += num;
+        }
+        if (sum < target) return 0;
+        int[] dp = new int[2*sum + 1];
+        dp[sum + nums[0]] = 1;
+        dp[sum - nums[0]] += 1;
+        
+        for (int i = 1; i < nums.length; ++i) {
+            int[] next = new int[2*sum + 1];
+            
+            for (int j = -sum; j <= sum; ++j) {
+                if (dp[sum + j] > 0) {
+                    next[sum + j + nums[i]] += dp[sum + j];
+                    next[sum + j - nums[i]] += dp[sum + j];
+                }
+                
+            }
+            dp = next;
+        }
+        
+        return dp[target + sum];
+    }
+    
+    
+}
