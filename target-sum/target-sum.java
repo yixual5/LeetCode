@@ -30,3 +30,32 @@ class Solution {
         }
     }
 }
+
+\\ cleaner solution
+class Solution {
+    private int count;
+    
+    public int findTargetSumWays(int[] nums, int target) {
+        if (nums == null) return 0;
+        this.count = 0;
+        
+        
+        backtracking(nums, target, 0);
+        return this.count;
+    }
+    
+    private void backtracking(int[] nums, int target, int idx) {
+        
+        if (idx == nums.length) {
+            if (target == 0) {
+                this.count++;
+                
+            }
+            return;
+        }
+        
+        backtracking(nums, target - nums[idx], idx + 1);
+        backtracking(nums, target + nums[idx], idx + 1); 
+        
+    }
+}
