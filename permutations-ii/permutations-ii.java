@@ -1,8 +1,9 @@
 class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         if (nums == null) return null;
+        // change list to set
         Set<List<Integer>> result = new HashSet<List<Integer>>();
-        //Set<Integer> cur = new LinkedHashSet<>(); //order matters
+        
         
         backtracking(result, nums, 0);
         return new ArrayList<>(result);
@@ -29,4 +30,40 @@ class Solution {
         nums[i] = nums[j];
         nums[j] = temp;
     }
+}
+
+
+
+
+// use hashmap to store the count of each integer that not unique, reduce the runtime to O(size of hashmap!) (worst runtime is as same as the previous soultion)
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        if (nums == null) return null;
+        Map<Integer, Integer> count = new HashMap<>();
+        List<List<Integer>> result = new ArrayList<>();
+        LinkedList<Integer> cur = new LinkedList<>();
+        for (int num: nums) {
+            count.compute(num, (k,v) -> v == null ? 1 : v + 1);
+        }
+        backtracking(nums.length, count, result, cur);
+        return result;
+    }
+    
+    private void backtracking(int numlength, Map<Integer, Integer> count,
+                        List<List<Integer>> result, LinkedList<Integer> cur) {
+        if (cur.size() == numlength) {
+            result.add((LinkedList) cur.clone());
+            return;
+        }
+        
+        for (Map.Entry<Integer, Integer> et: count.entrySet()) {
+            if (et.getValue() == 0) continue;
+            et.setValue(et.getValue() - 1);
+            cur.add(et.getKey());
+            backtracking(numlength, count, result, cur);
+            et.setValue(et.getValue() + 1);
+            cur.removeLast();
+        }
+    }
+    
 }
