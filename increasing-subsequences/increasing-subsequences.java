@@ -7,7 +7,7 @@ class Solution {
         
         return result;
     }
-    
+    // change linkedlist to arraylist for O(1) get
     private void backtracking(int idx, int[] nums, List<List<Integer>> result,       LinkedList<Integer> cur) {
         
         if (idx > nums.length) return;
