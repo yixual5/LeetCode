@@ -17,6 +17,7 @@ class Node {
 };
 */
 
+// same idea as maximun depth of binary tree
 class Solution {
     public int maxDepth(Node root) {
         if (root == null) return 0;
