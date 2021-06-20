@@ -41,3 +41,34 @@ class Solution {
         
     }
 }
+
+
+// cleaner solution
+class Solution {
+    List<Integer> result = new ArrayList<>();
+    int left;
+    int level;
+    public int findBottomLeftValue(TreeNode root) {
+        if (root == null) throw new IllegalArgumentException();
+        this.left = root.val;
+        this.level = 0;
+        dfs(root, 0);
+        return this.left;
+        
+    }
+    
+    private void dfs(TreeNode root, int curlevel) {
+        
+        if (root == null) return;
+        curlevel++;
+        if (curlevel > level) {
+            this.left = root.val;
+            this.level = curlevel;
+        }
+        
+        dfs(root.left, curlevel);
+        
+        dfs(root.right, curlevel);
+        
+    }
+}
