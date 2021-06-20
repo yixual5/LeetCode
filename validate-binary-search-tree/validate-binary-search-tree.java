@@ -28,3 +28,19 @@ class Solution {
         
     }
 }
+
+
+//inorder dfs
+class Solution {
+    long prev = Long.MIN_VALUE;
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) return true;
+        boolean left = isValidBST(root.left);
+        if (root.val <= prev) return false;
+        prev = root.val;
+        boolean right = isValidBST(root.right);
+        return left && right;
+    }
+    
+    
+}
