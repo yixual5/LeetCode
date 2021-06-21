@@ -13,6 +13,8 @@
  *     }
  * }
  */
+
+//top-down
 class Solution {
     int count = 0;
     
@@ -32,5 +34,26 @@ class Solution {
         }
         dfs(root.left, prev);
         dfs(root.right, prev);
+    }
+}
+
+//button-up
+class Solution {
+    
+    
+    public int goodNodes(TreeNode root) {
+        if (root == null) return 0;
+        
+        return dfs(root, root.val);
+        
+        
+    }
+    
+    private int dfs(TreeNode root, int prev) {
+        if (root == null) return 0;
+        int result = prev <= root.val ? 1 : 0;
+        result += dfs(root.left, Math.max(prev, root.val));
+        result += dfs(root.right, Math.max(prev, root.val));
+        return result;
     }
 }
