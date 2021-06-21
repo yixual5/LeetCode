@@ -13,6 +13,7 @@
  *     }
  * }
  */
+// dfs, but bfs is better
 class Solution {
     public List<Integer> largestValues(TreeNode root) {
         List<Integer> result = new ArrayList<>();
