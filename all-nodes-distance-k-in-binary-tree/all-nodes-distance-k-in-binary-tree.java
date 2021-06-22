@@ -51,3 +51,52 @@ class Solution {
         
     }
 }
+
+
+// just tree
+
+class Solution {
+    List<Integer> result = new ArrayList<>();
+    int k;
+    TreeNode target;
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+        
+        if (root == null || target == null) return result;
+        this.k = k;
+        this.target = target;
+        dfs(root);
+        return result;
+    }
+    
+    private int dfs (TreeNode root) {
+        if (root == null) return -1;
+        if (root == target) {
+            findsubtree(root, 0);
+            return 1;
+        } 
+        int left = dfs(root.left);
+        if (left != -1) {
+            if (left == k) result.add(root.val);
+            if (left < k) findsubtree(root.right, left + 1);
+            return left + 1; // pass back to parent
+        }
+        int right = dfs(root.right);
+        if (right != -1) {
+            if (right == k) result.add(root.val);
+            if (right < k) findsubtree(root.left, right + 1);
+            return right + 1; // pass back to parent
+        }
+        
+        return -1;
+        
+    }
+    
+    private void findsubtree(TreeNode node, int dis) {
+        if (node == null) return;
+        if (dis == this.k) {
+            result.add(node.val);
+        }
+        findsubtree(node.left, dis + 1);
+        findsubtree(node.right, dis + 1);
+    }
+}
