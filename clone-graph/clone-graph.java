@@ -18,10 +18,12 @@ class Node {
 }
 */
 
+//dfs
 class Solution {
     public Node cloneGraph(Node node) {
         if (node == null) return null;
         Map<Integer, Node> visited = new HashMap<>();
+        visited.put(node.val, new Node(node.val));
         dfsCopy(node, visited);
         return visited.get(node.val);
     }
@@ -29,18 +31,62 @@ class Solution {
     private void dfsCopy(Node node, Map<Integer, Node> visited) {
         if (node == null) return;
         
-        if (!visited.containsKey(node.val)) visited.put(node.val, new Node(node.val));
-        
         for (Node n : node.neighbors) {
-            if (visited.containsKey(n.val)) {
-                Node temp = visited.get(n.val);
-                visited.get(node.val).neighbors.add(temp);
-                continue;
+            if (!visited.containsKey(n.val)) {
+                visited.put(n.val, new Node(n.val));
+                
+                dfsCopy(n, visited);
             }
-            visited.put(n.val, new Node(n.val));
-            Node temp = visited.get(n.val);
-            visited.get(node.val).neighbors.add(temp);
-            dfsCopy(n, visited);
+            visited.get(node.val).neighbors.add(visited.get(n.val));
         }
     }
+}
+
+//cleaner dfs
+
+class Solution {
+    
+    Map<Integer, Node> visited = new HashMap<>();
+    public Node cloneGraph(Node node) {
+        if (node == null) return null;
+        
+        if (visited.containsKey(node.val)) return visited.get(node.val);
+        
+        visited.put(node.val, new Node(node.val));
+        
+        for (Node n : node.neighbors) {
+            visited.get(node.val).neighbors.add(cloneGraph(n));
+        }
+        return visited.get(node.val);
+    }
+    
+
+}
+
+//bfs
+
+class Solution {
+    
+    
+    public Node cloneGraph(Node node) {
+        if (node == null) return null;
+        Map<Integer, Node> visited = new HashMap<>();
+        Queue<Node> q = new LinkedList<>();
+        q.offer(node);
+        visited.put(node.val, new Node(node.val));
+        while(!q.isEmpty()) {
+            Node temp = q.poll();
+            for (Node n : temp.neighbors) {
+                if (!visited.containsKey(n.val)) {
+                    visited.put(n.val, new Node(n.val));
+                    q.offer(n);
+                }
+                visited.get(temp.val).neighbors.add(visited.get(n.val));
+                
+            }
+        }
+        return visited.get(node.val);
+    }
+    
+
 }
