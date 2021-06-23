@@ -1,3 +1,4 @@
+//topological sort
 class Solution {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         List<Integer> result = new ArrayList<>();
@@ -38,7 +39,7 @@ class Solution {
                     if (degree[it] == 2) {
                         
                         q.offer(it);
-                        leave.add(it);
+                        
                     } else if (degree[it] == 0) {
                         continue;
                     }
@@ -46,7 +47,10 @@ class Solution {
                 }
                 
             }
-            result = leave;
+            
+        }
+        while (!q.isEmpty()) {
+            result.add(q.poll());
         }
         return result;
         
