@@ -1,5 +1,5 @@
 class Solution {
-    
+    // backtracking
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         List<List<Integer>> result = new ArrayList<>();
         if (graph == null || graph.length == 0) return result;
