@@ -1,6 +1,7 @@
+// iterative dfs
 class Solution {
     public boolean canVisitAllRooms(List<List<Integer>> rooms) {
-        if (rooms == null || rooms.size() == 0) return true;
+        if (rooms == null || rooms.size() == 0) return false;
         boolean[] visited = new boolean[rooms.size()];
         visited[0] = true;
         Stack<Integer> cur = new Stack<>();
