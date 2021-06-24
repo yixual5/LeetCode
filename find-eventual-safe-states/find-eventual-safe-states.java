@@ -35,3 +35,32 @@ class Solution {
     
     
 }
+
+//dfs
+class Solution {
+    List<Integer> result = new ArrayList<>();
+    public List<Integer> eventualSafeNodes(int[][] graph) {
+        
+        if (graph == null || graph.length == 0) return result;
+        int[] safe = new int[graph.length];
+        for (int i = 0; i < graph.length; i++) {
+            if (dfs(i, graph, safe)) result.add(i);
+        }
+        return result;
+    }
+    
+    private boolean dfs(int i, int[][] graph, int[] safe) {
+        if (safe[i] == 2) return true;
+        if (safe[i] == 1) return false;
+        safe[i] = 1;
+        for (int j : graph[i]) {
+            if (!dfs(j, graph, safe)) {
+                
+                return false;
+            }
+            
+        }
+        safe[i] = 2;
+        return true;
+    }
+}
