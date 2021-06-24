@@ -1,4 +1,5 @@
 class Solution {
+    // union find
     public int[] findRedundantConnection(int[][] edges) {
         if (edges == null || edges.length == 0) return new int[]{};
         int[] root = new int[edges.length + 1];
