@@ -1,21 +1,28 @@
+// two-stack
 class MinStack {
     Stack<Integer> s;
-    Queue<Integer> q;
+    Stack<Integer> s2;
+    int min;
     /** initialize your data structure here. */
     public MinStack() {
         s = new Stack<>();
-        q = new PriorityQueue<>((v1, v2) -> v1.compareTo(v2));
+        s2 = new Stack<>();
     }
     
     public void push(int val) {
+        if (s2.isEmpty() || val <= s2.peek()) {
+            s2.push(val);
+        } else {
+            s2.push(s2.peek());
+        }
         s.push(val);
-        q.offer(val);
         
     }
     
     public void pop() {
+        s2.pop();
+        s.pop();
         
-        q.remove(s.pop());
     }
     
     public int top() {
@@ -23,7 +30,7 @@ class MinStack {
     }
     
     public int getMin() {
-        return q.peek();
+        return s2.peek();
     }
 }
 
