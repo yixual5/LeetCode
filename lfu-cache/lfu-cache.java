@@ -66,7 +66,7 @@ class LFUCache {
         if (temp == null) return -1;
         DoubleLinkedList dl = freqCount.get(temp.freq);
         dl.remove(temp);
-        if (dl.isEmpty() && minfreq == temp.freq) minfreq = temp.freq + 1;
+        if (dl.isEmpty() && minfreq == temp.freq) minfreq++;
         freqCount.computeIfAbsent(++temp.freq, k -> new DoubleLinkedList()).addFront(temp);
         
         return temp.val;
@@ -79,12 +79,12 @@ class LFUCache {
             temp.val = value;
             DoubleLinkedList dl = freqCount.get(temp.freq);
             dl.remove(temp);
-            if (dl.isEmpty() && minfreq == temp.freq) minfreq = temp.freq + 1;
+            if (dl.isEmpty() && minfreq == temp.freq) minfreq++;
             freqCount.computeIfAbsent(++temp.freq, k -> new DoubleLinkedList()).addFront(temp);
         } else {
             
             if (cache.size() == capacity) {
-                System.out.println(minfreq);
+                
                 int k = freqCount.get(minfreq).removeAndGet();
                 
                 cache.remove(k);
