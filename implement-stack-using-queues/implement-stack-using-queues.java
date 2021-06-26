@@ -1,3 +1,4 @@
+// one queue
 class MyStack {
     private Queue<Integer> q1;
     
