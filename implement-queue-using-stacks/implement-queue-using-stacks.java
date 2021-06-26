@@ -1,3 +1,4 @@
+//O(1) amortized
 class MyQueue {
     Stack<Integer> s1;
     Stack<Integer> s2;
