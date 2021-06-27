@@ -1,4 +1,5 @@
 class Solution {
+    //sort begin and end
     public int minMeetingRooms(int[][] intervals) {
         if (intervals == null || intervals.length == 0) return 0;
         if (intervals.length == 1) return 1;
