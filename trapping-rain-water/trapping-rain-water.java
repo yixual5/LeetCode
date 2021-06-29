@@ -55,13 +55,15 @@ class Solution {
         int rpointer = height.length - 1;
         while (lpointer < rpointer) {
             if (mleft < mright) {
-                ans += mleft - height[lpointer++];
-                mleft = Math.max(mleft, height[lpointer]);
+                //skip idx at 0
+                mleft = Math.max(mleft, height[++lpointer]);
+                ans += mleft - height[lpointer];
                 
                 
             } else {
-                ans += mright - height[rpointer--];
-                mright = Math.max(mright, height[rpointer]);
+                mright = Math.max(mright, height[--rpointer]);
+                ans += mright - height[rpointer];
+                
             }
         }
         
