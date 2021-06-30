@@ -3,7 +3,7 @@ class Solution {
         if (s == null || s.length() == 0) return s;
         StringBuffer sb = new StringBuffer();
         int left = 0;
-        
+        // add all pairs
         for (char c : s.toCharArray()) {
             if (c == '(') {
                 sb.append(c);
@@ -15,6 +15,7 @@ class Solution {
                 sb.append(c);
             }
         }
+        // remove most right ( if possible
         for (int i = sb.length() - 1; i >= 0; i--) {
             if (left == 0) return sb.toString();
             if (sb.charAt(i) == '(') {
