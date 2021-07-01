@@ -1,3 +1,4 @@
+// find the left product an right product except i itself, then combine two.
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         if (nums == null || nums.length == 0) return nums;
