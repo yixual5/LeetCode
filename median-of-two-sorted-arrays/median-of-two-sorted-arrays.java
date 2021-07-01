@@ -1,4 +1,5 @@
 class Solution {
+    //
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1 == null && nums2 == null) return (double) 0;
         
@@ -12,10 +13,10 @@ class Solution {
             l1 = nums1.length;
             l2 = nums2.length;
         }
-        if (nums1.length == 0 && nums2.length != 0) {
+        /*if (nums1.length == 0 && nums2.length != 0) {
             return iseven ? (double)(nums2[l2 / 2] + nums2[l2 / 2 - 1]) / 2 : (double)nums2[l2 / 2];
         }
-        if (nums2.length == 0) return 0.0;
+        if (nums2.length == 0) return 0.0;*/
         int start = 0;
         int end = l1;
         
