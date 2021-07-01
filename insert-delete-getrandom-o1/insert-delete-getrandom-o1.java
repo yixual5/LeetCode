@@ -1,3 +1,5 @@
+// hashmap gives o(1) delete and insert, also keep track of idx of each val. We need an extra arrayList to store the value so that we can implement the 
+// getRandom in O(1)
 class RandomizedSet {
     Random r = new Random();
     private List<Integer> l = new ArrayList<>();
