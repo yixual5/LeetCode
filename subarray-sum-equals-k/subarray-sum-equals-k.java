@@ -1,3 +1,4 @@
+// o(n^2)
 class Solution {
     public int subarraySum(int[] nums, int k) {
         
@@ -13,6 +14,22 @@ class Solution {
                 count[j] = count[j] - nums[i - 1];
                 if (count[j] == k) result++;
             }
+        }
+        return result;
+    }
+}
+
+//O(n)
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        Map<Integer, Integer> count = new HashMap<>();
+        int result = 0;
+        int sum = 0;
+        count.put(0, 1);
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            result += count.getOrDefault(sum - k, 0);
+            count.put(sum, count.getOrDefault(sum, 0) + 1);
         }
         return result;
     }
