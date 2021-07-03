@@ -1,3 +1,4 @@
+//O(1) runtime, O(number of stations^2 + number of passenger on the train)
 class UndergroundSystem {
     Map<Integer, Pair<String, Integer>> start;
     Map<String, int[]> count;
