@@ -32,3 +32,29 @@ class Solution {
     
     
 }
+
+//dp solution
+class Solution {
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() == 0) return s;
+        
+        String result = "";
+        int bestL = 0;
+        boolean dp[][] = new boolean[s.length()][s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j <= i; j++) {
+                boolean temp = s.charAt(i) == s.charAt(j);
+                dp[j][i] = i - j + 1 > 2 ? temp && dp[j + 1][i - 1]: temp;
+                int l = i - j + 1;
+                if (dp[j][i] && l > bestL) {
+                    bestL = l;
+                    result = s.substring(j, i + 1);
+                }
+            }
+        }
+        
+        return result;
+    }
+    
+    
+}
