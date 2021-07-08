@@ -1,3 +1,4 @@
+//
 class Solution {
     public String addStrings(String num1, String num2) {
         if (num1 == null || num1.length() == 0) return num2;
