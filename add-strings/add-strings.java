@@ -45,3 +45,29 @@ class Solution {
         return sb.toString();
     }
 }
+
+//cleaner sol
+class Solution {
+    public String addStrings(String num1, String num2) {
+        if (num1 == null || num1.length() == 0) return num2;
+        if (num2 == null || num2.length() == 0) return num1;
+        char[] s1 = num1.toCharArray();
+        char[] s2 = num2.toCharArray();
+
+        int carry = 0;
+        int num1Length = s1.length - 1;
+        int num2Length = s2.length - 1;
+        StringBuffer sb = new StringBuffer();
+        while (num1Length >= 0 || num2Length >= 0) {
+            int n1 = num1Length < 0 ? 0 : s1[num1Length--] - '0';
+            int n2 = num2Length < 0 ? 0 : s2[num2Length--] - '0';
+            int val = (n1 + n2 + carry) % 10;
+            carry = (n1 + n2 + carry) / 10;
+            sb.append(val);
+        }
+        
+        if (carry == 1) sb.append(1);
+        
+        return sb.reverse().toString();
+    }
+}
