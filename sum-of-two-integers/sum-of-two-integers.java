@@ -1,3 +1,5 @@
+// 50 mins, hard to understand the minus operation
+
 class Solution {
     public int getSum(int a, int b) {
         int x = Math.abs(a);
@@ -20,5 +22,20 @@ class Solution {
             }
         }
         return sign * x;
+    }
+}
+
+//without mutliple to check sign, still hard to understand it
+class Solution {
+    public int getSum(int a, int b) {
+
+        while (b != 0) {
+            int temp = a ^ b;
+            int borrow = (a & b) << 1;
+            a = temp;
+            b = borrow;
+        }
+
+        return a;
     }
 }
