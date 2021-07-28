@@ -1,12 +1,13 @@
+// with memorization backtracking O(n^3)
 class Solution {
     Boolean[] visited;
     String s;
     public boolean wordBreak(String s, List<String> wordDict) {
         this.visited = new Boolean[s.length()];
-        return backtracking(0, wordDict, s);
+        return backtracking(0, new HashSet<>(wordDict), s);
     }
     
-    private boolean backtracking(int idx,  List<String> wordDict, String s) {
+    private boolean backtracking(int idx,  Set<String> wordDict, String s) {
         if (idx == s.length()) return true;
         if (visited[idx] != null) {
             return visited[idx];
