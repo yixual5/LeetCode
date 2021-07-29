@@ -1,3 +1,4 @@
+// 30 mins
 class Solution {
     public void nextPermutation(int[] nums) {
         int prev = -1;
