@@ -1,3 +1,4 @@
+// O(N)
 class Solution {
     public int countBinarySubstrings(String s) {
         char[] stoc = s.toCharArray();
