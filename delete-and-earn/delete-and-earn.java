@@ -1,3 +1,4 @@
+// using TreeMap to sort, O(nlogn), dp keep track of prev stats
 class Solution {
     public int deleteAndEarn(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
@@ -30,6 +31,33 @@ class Solution {
             prev = temp.getKey();
         }
         
+        return Math.max(include, notInclude);
+    }
+}
+
+// count sort O(n + 10001) = O(n)
+class Solution {
+    public int deleteAndEarn(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        int[] count = new int[10001];
+        int include = 0;
+        int notInclude = 0;
+        int prev = -1;
+        for (int i = 0; i < nums.length; i++) {
+            count[nums[i]]++;
+        }
+        for (int i = 1; i < count.length; i++) {
+            if (count[i] == 0) continue;
+            int mx = Math.max(include, notInclude);
+            if (i == prev + 1) {
+                include = notInclude + i * count[i];
+                notInclude = mx;
+            } else {
+                include = mx + i * count[i];
+                notInclude = mx;
+            }
+            prev = i;
+        }
         return Math.max(include, notInclude);
     }
 }
