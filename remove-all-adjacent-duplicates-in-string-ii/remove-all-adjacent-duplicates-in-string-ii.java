@@ -1,3 +1,4 @@
+// O(N) time complexity and space, using stack as extra space, count array is also ok, 1 hr
 class Solution {
     public String removeDuplicates(String s, int k) {
         if (s == null || k == 1) return null;
