@@ -1,3 +1,4 @@
+//bottom up dp
 class Solution {
     int[] memo = new int[50000];
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
@@ -47,4 +48,52 @@ class Solution {
         return memo[idx] = mx;
     }
     
+}
+
+//Top-down dp
+class Solution {
+    int[] memo = new int[50001];
+    public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
+        if (profit == null || profit.length == 0) return 0;
+        List<int[]> store = new ArrayList<>();
+        for (int i = 0; i < startTime.length; i++) {
+            int[] temp = new int[3];
+            temp[0] = startTime[i];
+            temp[1] = endTime[i];
+            temp[2] = profit[i];
+            store.add(temp);
+        }
+        Collections.sort(store, (a1,a2) -> a1[0] - a2[0]);
+        for (int i = 0; i < store.size(); i++) {
+            startTime[i] = store.get(i)[0];
+        }
+        
+        for (int i = store.size() - 1; i >= 0; i--) {
+            if (i == store.size() - 1) {
+                memo[i] = store.get(i)[2];
+            } else {
+                int nextInt = bsearch(startTime, store.get(i)[1]);
+                memo[i] = Math.max(memo[nextInt] + store.get(i)[2],
+                                   memo[i + 1]);
+            }
+            
+        }
+        return memo[0];
+    }
+    
+    private int bsearch(int[] startTime, int end) {
+        int left = 0;
+        int right = startTime.length - 1;
+        int result = startTime.length; //if cannot find it, stop in next
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (startTime[mid] >= end) {
+                result = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return result;
+    }
 }
