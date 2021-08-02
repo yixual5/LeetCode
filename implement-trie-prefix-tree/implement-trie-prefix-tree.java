@@ -1,3 +1,4 @@
+// first time to learn tire, 40 mins
 class Trie {
     
     
