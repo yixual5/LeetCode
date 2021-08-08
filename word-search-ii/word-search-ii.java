@@ -1,3 +1,4 @@
+// 1hr
 class Solution {
     class TrieNode{
         String word;
