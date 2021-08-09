@@ -1,3 +1,4 @@
+// 40 mins, hard to understand boundary of binary search
 class TimeMap {
     class valuepair {
         String val;
