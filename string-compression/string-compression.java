@@ -1,3 +1,4 @@
+// 30 mins, O(n)
 class Solution {
     public int compress(char[] chars) {
         if (chars == null || chars.length == 0) return 0;
