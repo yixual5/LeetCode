@@ -1,4 +1,4 @@
-// iterative bfs
+// iterative bfs, 20 mins
 class Solution {
     
     int[] x = new int[]{1, -1, 0, 0};
