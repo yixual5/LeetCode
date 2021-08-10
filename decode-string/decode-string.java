@@ -1,3 +1,4 @@
+// pretty as same as basic calculator
 class Solution {
     int idx = 0;
     public String decodeString(String s) {
