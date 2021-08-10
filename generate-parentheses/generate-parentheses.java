@@ -1,3 +1,4 @@
+// backtracking, 30 mins
 class Solution {
     List<String> result = new ArrayList<>();
     int n = 0;
