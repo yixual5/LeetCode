@@ -1,3 +1,4 @@
+// doesn't have too much thoughts at begining, 40 mins
 class WordDistance {
     private Map<String, List<Integer>> map = new HashMap<>();
     public WordDistance(String[] wordsDict) {
