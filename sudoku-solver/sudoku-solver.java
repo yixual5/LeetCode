@@ -1,3 +1,4 @@
+// 50 mins
 class Solution {
     int n = 3;
     int N = 9;
