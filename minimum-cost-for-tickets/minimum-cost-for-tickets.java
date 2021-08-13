@@ -24,3 +24,27 @@ class Solution {
         return dp[day];
     }
 }
+
+//O(N)
+class Solution {
+    int[] dp;
+    int[] nextDay = new int[]{1, 7, 30};
+    public int mincostTickets(int[] days, int[] costs) {
+        dp = new int[days.length];
+        Arrays.fill(dp, 365001);
+        return dfs(0, costs, days);
+    }
+    
+    private int dfs(int idx, int[] costs, int[] days) {
+        if (idx > days.length - 1) {
+            return 0;
+        }
+        if (dp[idx] != 365001) return dp[idx];
+        int j = idx;
+        for (int i = 0; i < 3; i++) {
+            while (j < days.length && days[j] < days[idx] + nextDay[i]) j++;
+            dp[idx] = Math.min(dp[idx], dfs(j, costs, days) + costs[i]);
+        }
+        return dp[idx];
+    }
+}
