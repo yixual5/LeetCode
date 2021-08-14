@@ -1,3 +1,5 @@
+//o(N), 30 mins
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
