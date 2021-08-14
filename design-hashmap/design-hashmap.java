@@ -1,3 +1,4 @@
+// 20 mins
 class MyHashMap {
     class Node {
         int val;
