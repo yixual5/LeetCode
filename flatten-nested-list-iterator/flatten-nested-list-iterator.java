@@ -46,8 +46,36 @@ public class NestedIterator implements Iterator<Integer> {
     }
 }
 
-/**
- * Your NestedIterator object will be instantiated and called as such:
- * NestedIterator i = new NestedIterator(nestedList);
- * while (i.hasNext()) v[f()] = i.next();
- */
+
+// using stack(dequeue)
+import java.util.NoSuchElementException;
+public class NestedIterator implements Iterator<Integer> {
+    private Deque<NestedInteger> dq;
+    
+    public NestedIterator(List<NestedInteger> nestedList) {
+        dq = new ArrayDeque<>(nestedList);
+    }
+    
+    private void flushToStack() {
+        while (!dq.isEmpty() && !dq.peekFirst().isInteger()) {
+            List<NestedInteger> temp = dq.removeFirst().getList();
+            
+            for (int i = temp.size() - 1; i >= 0; i--) {
+                dq.addFirst(temp.get(i));
+            }
+        }
+    }
+    
+    @Override
+    public Integer next() {
+        flushToStack();
+        if (dq.isEmpty()) throw new NoSuchElementException();
+        return dq.removeFirst().getInteger();
+    }
+
+    @Override
+    public boolean hasNext() {
+        flushToStack();
+        return !dq.isEmpty();
+    }
+}
