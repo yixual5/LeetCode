@@ -1,3 +1,4 @@
+// use count to prevent overflow, 5 mins
 class Solution {
     public int arraySign(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
