@@ -20,3 +20,24 @@ class Solution {
         return memo[idx];
     }
 }
+
+//iterative
+class Solution {
+    
+    public int numDecodings(String s) {
+        if (s.length() == 0) return 0;
+
+        char[] stoc = s.toCharArray();
+        int[] memo = new int[stoc.length + 1];
+        memo[0] = 1;
+        memo[1] = stoc[0] == '0' ? 0 : 1;
+        for (int i = 2; i <= stoc.length; i++) {
+            if ((stoc[i - 2] - '0' == 2 && stoc[i - 1] - '0' <= 6) || stoc[i - 2] - '0' == 1) memo[i] += memo[i - 2];
+            if (stoc[i - 1] != '0') memo[i] += memo[i - 1];
+        }
+        
+        return memo[stoc.length];
+
+    }
+    
+}
