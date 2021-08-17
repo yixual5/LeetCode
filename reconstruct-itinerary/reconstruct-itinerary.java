@@ -1,3 +1,4 @@
+//O(Elog(E/V)) average case
 class Solution {
     private int count;
     public List<String> findItinerary(List<List<String>> tickets) {
