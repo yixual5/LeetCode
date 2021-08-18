@@ -1,3 +1,4 @@
+// generalize to k sum
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
