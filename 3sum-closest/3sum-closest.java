@@ -1,3 +1,4 @@
+//O(N^2)
 class Solution {
     int diff = Integer.MAX_VALUE;
     public int threeSumClosest(int[] nums, int target) {
