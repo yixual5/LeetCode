@@ -1,7 +1,7 @@
 class Solution {
     public int minTaps(int n, int[] ranges) {
         int[] distance = new int[n + 1];
-        Arrays.fill(distance, -1);
+        //Arrays.fill(distance, -1);
         for (int i = 0; i < ranges.length; i++) {
             if (ranges[i] == 0) continue;
             int left = Math.max(i - ranges[i], 0);
