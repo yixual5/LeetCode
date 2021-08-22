@@ -1,3 +1,4 @@
+//split into two subset, let their sum be close to total sum / 2
 class Solution {
     public int lastStoneWeightII(int[] stones) {
         if (stones == null || stones.length == 0) return 0;
