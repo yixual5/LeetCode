@@ -22,3 +22,22 @@ class Solution {
         return -1;
     }
 }
+
+//pq, greedy move to farthest position, then refuel the largest amount fuel it can fuel
+class Solution {
+
+    public int minRefuelStops(int target, int startFuel, int[][] stations) {        
+        if (startFuel >= target) return 0;
+        if (stations == null || stations.length == 0) return -1;
+        PriorityQueue<Integer> q = new PriorityQueue<>((a1, a2) -> a2 - a1);
+        int idx = 0, count = 0, cur = startFuel;
+        while (cur < target) {
+            
+            while (idx < stations.length && stations[idx][0] <= cur) q.offer(stations[idx++][1]);
+            if (q.isEmpty()) return -1;
+            cur += q.poll();
+            count++;
+        }
+        return count;
+    }
+}
