@@ -1,3 +1,4 @@
+//2d
 class Solution {
     public boolean canPartition(int[] nums) {
         int sum = 0;
@@ -15,5 +16,25 @@ class Solution {
             }
         }
         return dp[nums.length][target];
+    }
+}
+
+//1d dp
+class Solution {
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for (int num : nums) sum += num;
+        if (sum == 0) return true;
+        if (sum % 2 != 0) return false;
+        int target = sum / 2;
+        
+        boolean[] dp = new boolean[target + 1];
+        dp[0] = true;
+        for (int i = 1; i <= nums.length; i++) {
+            for (int j = target; j >= 0; j--) {
+                if (j >= nums[i - 1]) dp[j] = dp[j] || dp[j - nums[i - 1]];
+            }
+        }
+        return dp[target];
     }
 }
