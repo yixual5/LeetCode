@@ -1,3 +1,4 @@
+//Trie
 class AutocompleteSystem {
     class Trie implements Comparable<Trie>{
         int times = 0;
