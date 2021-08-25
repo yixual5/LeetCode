@@ -1,3 +1,4 @@
+//can use linkedHashMap to generalize the solution
 class Solution {
     public List<String> fizzBuzz(int n) {
         List<String> result = new ArrayList<>(n);
