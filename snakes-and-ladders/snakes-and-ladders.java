@@ -1,3 +1,4 @@
+//bfs, O(n)
 class Solution {
     int n;
     public int snakesAndLadders(int[][] board) {
