@@ -12,3 +12,15 @@ class Solution {
         return true;
     }
 }
+
+//java8 stream
+class Solution {
+    public boolean isPalindrome(String s) {
+        StringBuffer sb = new StringBuffer();
+        s.chars()
+            .filter(c -> Character.isLetterOrDigit(c))
+            .mapToObj(c -> Character.toLowerCase((char) c))
+            .forEach(sb::append);
+        return sb.toString().equals(sb.reverse().toString());
+    }
+}
