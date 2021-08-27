@@ -28,3 +28,25 @@ class Solution {
         return count;
     }
 }
+
+//dp
+class Solution {
+    
+    public int longestStrChain(String[] words) {
+        Arrays.sort(words, (a, b) -> a.length() - b.length());
+        Map<String, Integer> memo = new HashMap<>();
+        int max = 0;
+        for (String word : words) {
+            int count = 1;
+            for (int i = 0; i < word.length(); i++) {
+                StringBuffer sb = new StringBuffer(word);
+                sb.deleteCharAt(i);
+                String ss = sb.toString();
+                count = Math.max(memo.getOrDefault(ss, 0) + 1, count);
+            }
+            memo.put(word, count);
+            max = Math.max(count, max);
+        }
+        return max;
+    }
+}
