@@ -1,4 +1,5 @@
-//factor 2 and 3 works best, math
+//if factor is greater than or equal to 4, we can break it down to 2 and 3 and increase the amount, so we only consider 3 and 2
+//3 is better than 2 : 3 * 3 > 2 * 2 * 2
 class Solution {
     public int integerBreak(int n) {
         if (n == 2) return 1;
