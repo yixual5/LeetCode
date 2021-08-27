@@ -1,3 +1,4 @@
+//O(N)
 class Solution {
     public int longestConsecutive(int[] nums) {
         Set<Integer> s = new HashSet<Integer>();
