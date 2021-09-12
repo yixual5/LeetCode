@@ -1,3 +1,4 @@
+//每个元素找到左边最近小的和右边最近小的
 class Solution {
     public int sumSubarrayMins(int[] arr) {
         Deque<Integer> prev = new ArrayDeque<>();
@@ -20,8 +21,8 @@ class Solution {
             // we have left elements include i
             // for left, we have right choice
             // total is left * right
-            ans = (ans + (long) right[i] * left[i] * arr[i]) % 1000000007;
+            ans += (long) right[i] * left[i] * arr[i];
         }
-        return (int) ans;
+        return (int) (ans % 1000000007);
     }
 }
