@@ -13,3 +13,20 @@ class Solution {
         return stack.pop();
     }
 }
+
+//ignore intermediate step, when reach buttom - (), we calcualte how many 2 we need multiple
+class Solution {
+    public int scoreOfParentheses(String s) {
+        int layer = 0;
+        int result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                layer++;
+            } else {
+                layer--;
+                if (s.charAt(i - 1) == '(')result += 1 << layer;
+            }
+        }
+        return result;
+    }
+}
