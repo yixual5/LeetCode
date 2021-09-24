@@ -9,25 +9,25 @@ class Solution {
             map.put(sender, map.getOrDefault(sender, 0) - amount);
             map.put(recevier, map.getOrDefault(recevier, 0) + amount);
         }
-        int[] debt = new int[map.size()];
-        int idx = 0;
-        for (int i : map.values()) {
-            debt[idx++] = i;
-        }
-        return backtracking(debt, 0);
-    }
-    
-    private int backtracking(int[] debt, int cur) {
-        while (cur < debt.length && debt[cur] == 0) cur++;
-        if (cur == debt.length) return 0;
-        int min = Integer.MAX_VALUE;
-        for (int i = cur + 1; i < debt.length; i++) {
-            if (debt[i] * debt[cur] < 0) {
-                debt[i] += debt[cur];
-                min = Math.min(min, backtracking(debt, cur + 1) + 1);
-                debt[i] -= debt[cur];
+        List<Integer> debt = map.values().stream().filter(v -> v != 0).collect(Collectors.toList());
+        int[] dp = new int[1 << debt.size()];
+        int[] sum = new int[1 << debt.size()];
+        for (int i = 0; i < dp.length; i++) {
+            int setBit = 1;
+            for (int j = 0; j < debt.size(); j++) {
+                if ((i & setBit) == 0) {
+                    int nxt = i | setBit;
+                    sum[nxt] = sum[i] + debt.get(j);
+                    if (sum[nxt] == 0) {
+                        dp[nxt] = Math.max(dp[i] + 1, dp[nxt]);
+                    } else {
+                        dp[nxt] = Math.max(dp[i], dp[nxt]);
+                    }
+                }
+                setBit <<= 1;
             }
         }
-        return min;
+        return debt.size() - dp[dp.length - 1];
     }
+    
 }
