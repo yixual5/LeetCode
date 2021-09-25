@@ -22,3 +22,35 @@ class Solution {
         return result;
     }
 }
+
+// using prefix as an indicator for how many new subarray satifiy constraints
+class Solution {
+    public int subarraysWithKDistinct(int[] nums, int k) {
+        if ((nums == null || nums.length == 0) && k != 0) return 0;
+        int left = 0;
+        int prefix = 0;
+        Map<Integer, Integer> count = new HashMap<>();
+        int result = 0;
+        for (int right = 0; right < nums.length; right++) {
+            if (count.getOrDefault(nums[right], 0) == 0) k--;
+            count.put(nums[right], count.getOrDefault(nums[right], 0) + 1);
+            // do it only once because we only have distinct value in subarray right now
+            if (k < 0) {
+                prefix = 0;
+                count.put(nums[left], 0);
+                left++;
+                k++;
+            }
+            while (count.get(nums[left]) > 1) {
+                count.put(nums[left], count.get(nums[left]) - 1);
+                prefix++;
+                left++;
+            }
+            // only distinct left
+            
+            if (k == 0) result += prefix + 1;
+        }
+        return result;
+    }
+}
+            
