@@ -1,19 +1,20 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> m = new HashMap<>();
         int i = 0;
         int j = nums.length - 1;
-        while (i <= nums.length / 2 && j >= nums.length / 2) {
-            m.put(nums[i], i);
-            m.put(nums[j], j);
-            if (m.containsKey(target - nums[i]) && m.get(target - nums[i]) != i) {
-                return new int[]{i, m.get(target - nums[i])};
+        Map<Integer, Integer> check = new HashMap<>();
+        while (i <= j) {
+            if (nums[i] + nums[j] == target) return new int[]{i, j};
+            int iComplement = check.getOrDefault(target - nums[i], - 1);
+            if (iComplement != -1) {
+                return new int[] {i, iComplement};
             }
-            if (m.containsKey(target - nums[j]) && m.get(target - nums[j]) != j) {
-                return new int[]{j, m.get(target - nums[j])};
+            int jComplement = check.getOrDefault(target - nums[j], - 1);
+            if (jComplement != -1) {
+                return new int[] {j, jComplement};
             }
-            j--;
-            i++;
+            check.put(nums[i], i++);
+            check.put(nums[j], j--);
         }
         return null;
     }
