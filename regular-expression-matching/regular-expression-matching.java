@@ -1,23 +1,31 @@
 class Solution {
     public boolean isMatch(String s, String p) {
-        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
-        //backward moving
-        int idx = p.length() - 1;
-        dp[s.length()][p.length()] = true;
-        //if s is at empty, we only can let them equal when we have *
-        for(int j = p.length() - 2; j >= 0; j -= 2){
-            if (p.charAt(j + 1) == '*') dp[s.length()][j] = dp[s.length()][j + 2];
-        }
         
-        for (int j = p.length() - 1; j >= 0; j--) {
-            for (int i = s.length() - 1; i >= 0; i--) {
-                if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
-                    dp[i][j] = ((p.charAt(j) == '.' || p.charAt(j) == s.charAt(i)) && dp[i + 1][j]) || dp[i][j + 2]; // j+2 means skip num*, i+1 means increase num* by one
-                } else {
-                    dp[i][j] = (p.charAt(j) == '.' || p.charAt(j) == s.charAt(i)) && dp[i + 1][j + 1];
+        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
+        dp[0][0] = true;
+        for (int i = 2; i < dp[0].length; i += 2) {
+            if (p.charAt(i - 1) == '*') {
+                dp[0][i] = dp[0][i - 2];
+            } else {
+                break;
+            }
+        }
+        for (int i = 1; i <= p.length(); i++) {
+            for (int j = 1; j <= s.length(); j++) {
+                char c = p.charAt(i - 1);
+                if (c == '.') {
+                    dp[j][i] = dp[j - 1][i - 1];
+                } else if (c == '*') {
+                    if (p.charAt(i - 2) == s.charAt(j - 1) || p.charAt(i - 2) == '.') {
+                        dp[j][i] = dp[j - 1][i - 2] || dp[j][i - 2] || dp[j - 1][i];
+                    } else {
+                        dp[j][i] = dp[j][i - 2];
+                    }
+                } else if (c == s.charAt(j - 1)) {
+                    dp[j][i] = dp[j - 1][i - 1];
                 }
             }
         }
-        return dp[0][0];
+        return dp[s.length()][p.length()];
     }
 }
