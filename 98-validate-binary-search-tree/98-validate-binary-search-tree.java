@@ -14,24 +14,13 @@
  * }
  */
 class Solution {
-    long prev = Long.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
-        prev = root.val;
         return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
     
     private boolean dfs(TreeNode root, Long left, Long right) {
         if (root == null) return true;
         if (root.val <= left || root.val >= right) return false;
-        boolean l = true;
-        boolean r = true;
-        if (root.left != null) {
-            l = dfs(root.left, left, (long) root.val);
-        }
-        if (root.right != null) {
-            r = dfs(root.right, (long) root.val, right);
-        }
-        return l && r;
-        
+        return dfs(root.left, left, (long) root.val) && dfs(root.right, (long) root.val, right);
     }
 }
