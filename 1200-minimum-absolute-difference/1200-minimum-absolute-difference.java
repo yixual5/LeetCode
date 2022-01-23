@@ -6,7 +6,7 @@ class Solution {
         for (int i = 1; i < arr.length; i++) {
             if (diff > arr[i] - arr[i - 1]) {
                 diff = arr[i] - arr[i - 1];
-                res = new LinkedList<>();
+                res.clear();
                 res.add(Arrays.asList(new Integer[]{arr[i - 1], arr[i]}));
             } else if (diff == arr[i] - arr[i - 1]) res.add(Arrays.asList(new Integer[]{arr[i - 1], arr[i]}));
         }
