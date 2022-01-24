@@ -16,7 +16,7 @@ class Solution {
             for (Integer i : graph.get(cur)) {
                 degrees[i]--;
                 if (degrees[i] == 0) q.offer(i);
-                if (degrees[i] < 0) return new int[0];
+                
             }
         }
         if (order.size() != numCourses) return new int[0];
